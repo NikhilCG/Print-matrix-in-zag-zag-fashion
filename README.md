@@ -1,2 +1,2 @@
-# Print-matrix-in-zag-zag-fashion
-This application is to print matrix in zag-zag fashion
+# Print-matrix-in-zig-zag-fashion
+This application is to print matrix in zig-zag fashion
