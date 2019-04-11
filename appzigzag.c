@@ -14,21 +14,22 @@ void traverse(int arr[][5], int N)
  {
     
     int m = 0, k = 0;    
-    static bool currentState = false;
-    static bool strait = false;
-    static bool up = false;
+    static bool switch_up_down = false;
+    static bool up_down = false;
+    static bool diag_up_down = false;
     
-    std::cout << arr[m][k] << " "; 
+    std::cout << arr[m][k] << " ";
+    
         while(1)
         {
-            if(!currentState)
+            if(!switch_up_down)
             {
                 if( k >= N && m >= N)
                 {
                     break;
                 }
 
-                if(!strait && k <= N)
+                if(!up_down)
                 {
                     if( k != N)
                     {
@@ -40,7 +41,7 @@ void traverse(int arr[][5], int N)
                     }
                     std::cout << arr[m][k] << " "; 
                 }
-                else if(m <= N)
+                else
                 {
                     if( m != N)
                     {
@@ -50,9 +51,10 @@ void traverse(int arr[][5], int N)
                     {
                         k++;
                     }
+                    
                     std::cout << arr[m][k] << " "; 
                 }
-                strait = !strait;
+                up_down = !up_down;
             }
             else
             {
@@ -61,12 +63,12 @@ void traverse(int arr[][5], int N)
                     break;
                 }
                 
-                if(up)
+                if(diag_up_down)
                 {
-                    int prvA = m, pevB = k;
+                    int row = m, col = k;
                     while(1)
                     {
-                        if((m == pevB) && (k == prvA))
+                        if((m == col) && (k == row))
                         {
                             break;
                         }
@@ -80,10 +82,10 @@ void traverse(int arr[][5], int N)
                 }
                 else
                 {
-                    int prvM = m, pevK = k;
+                    int row = m, col = k;
                     while(1)
                     {
-                        if((m == pevK) && (k == prvM))
+                        if((m == col) && (k == row))
                         {
                             break;
                         }
@@ -95,9 +97,9 @@ void traverse(int arr[][5], int N)
                         }
                     }
                 }
-                up = !up;
+                diag_up_down = !diag_up_down;
             }
-            currentState = !currentState;             
+            switch_up_down = !switch_up_down;             
         }
     }
 
@@ -110,5 +112,7 @@ int main()
                   {16,17,18,19,20},
                   {21,22,23,24,25}};                
  
+    // print the matrix in zig zag fashion
+    // matrix 5*5 since the loop start from 0, passing 4  
     traverse(arr, 4);
 }
