@@ -13,8 +13,7 @@
 void traverse(int arr[][5], int N)
  {
     
-    int m = 0, k = 0;
-    
+    int m = 0, k = 0;    
     static bool currentState = false;
     static bool strait = false;
     static bool up = false;
